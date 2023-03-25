@@ -81,7 +81,12 @@ const LandingSection = () => {
                 isInvalid={formik.touched.type && formik.errors.type}
               >
                 <FormLabel htmlFor="type">Type of enquiry</FormLabel>
-                <Select id="type" name="type">
+                <Select
+                  id="type"
+                  name="type"
+                  value={formik.values.type}
+                  onChange={formik.handleChange}
+                >
                   <option value="hireMe">Freelance project proposal</option>
                   <option value="openSource">
                     Open source consultancy session
@@ -93,10 +98,22 @@ const LandingSection = () => {
                 isInvalid={formik.touched.comment && formik.errors.comment}
               >
                 <FormLabel htmlFor="comment">Your message</FormLabel>
-                <Textarea id="comment" name="comment" height={250} />
+                <Textarea
+                  id="comment"
+                  name="comment"
+                  height={250}
+                  value={formik.values.comment}
+                  onChange={formik.handleChange}
+                />
+
                 <FormErrorMessage>{formik.errors.comment}</FormErrorMessage>
               </FormControl>
-              <Button type="submit" colorScheme="purple" width="full">
+              <Button
+                type="submit"
+                colorScheme="purple"
+                width="full"
+                isLoading={isLoading}
+              >
                 Submit
               </Button>
             </VStack>
